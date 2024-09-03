@@ -33,4 +33,3 @@ def unauthorized() -> None:
       - 401 status code
     """
     abort(401)
-  
