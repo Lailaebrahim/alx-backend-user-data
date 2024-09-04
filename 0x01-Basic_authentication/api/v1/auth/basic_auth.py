@@ -26,10 +26,11 @@ class BasicAuth(Auth):
         Method that returns the decoded value 
         of a Base64 string base64_authorization_header
         Args:
-            base64_authorization_header (str): the encoded value of a Base64 string
+            base64_authorization_header (str):
+            the encoded value of a Base64 string
 
         Returns:
-            str: the decoded value of a Base64 string base64_authorization_header
+            str: the decoded value of base64_authorization_header
         """
         if base64_authorization_header is None\
         or not isinstance(base64_authorization_header, str):
