@@ -65,10 +65,13 @@ class BasicAuth(Auth):
                                      user_email: str,
                                      user_pwd: str,
                                      ) -> User:
-        """_summary_
-
-        Args:
-            self (_type_): _description_
+        """ 
+        Retrieve a User object based on the provided email and password.
+            user_email (str): The email of the user.
+            user_pwd (str): The password of the user.
+        Returns:
+            User: The User object if the email and password match,
+            otherwise None.
         """
         if user_email is None or \
                 not isinstance(user_email, str) or \
