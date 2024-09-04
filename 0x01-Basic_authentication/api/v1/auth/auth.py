@@ -35,7 +35,7 @@ class Auth():
         Returns:
             str:
         """
-        if request is None or request.get('Authorization'):
+        if request is None or request.headers.get('Authorization'):
             return None
         return request.headers.get('Authorization')
 
