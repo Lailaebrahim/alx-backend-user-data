@@ -1,1 +1,2 @@
-from .auth import Auth, BasicAuth
+from .auth import Auth
+from .basic_auth import BasicAuth
