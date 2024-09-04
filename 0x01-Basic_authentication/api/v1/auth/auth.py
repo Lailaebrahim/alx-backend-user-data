@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for auth views
+"""Module for auth Class
 """
 from flask import request
 from typing import List, TypeVar
