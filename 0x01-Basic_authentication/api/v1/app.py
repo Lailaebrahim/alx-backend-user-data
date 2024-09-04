@@ -42,11 +42,12 @@ def forbbiden(error) -> str:
 @app.before_request
 def before_request_func():
     """Flask.before_request() is a decorator in Flask,
-    that allows you to register functions to run before each request is processed.
+    that allows you to register functions to run before
+    each request is processed.
     Method first check if authentication used
     if so then check the request path if it require authentication
     if so then check the authorization header of request
-    if it exists checks the user 
+    if it exists checks the user
     """
     if auth is None:
         return
