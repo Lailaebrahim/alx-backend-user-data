@@ -88,7 +88,6 @@ class BasicAuth(Auth):
                 return user
         return None
 
-
     def current_user(self, request=None) -> User:
         """_summary_
 
@@ -100,9 +99,9 @@ class BasicAuth(Auth):
         """
         try:
             auth_header = self.authorization_header(request)
-            base64_auth_header = self.extract_base64_authorization_header(auth_header)
+            base64_auth_h = self.extract_base64_authorization_header(auth_header)
             auth_header = self.decode_base64_authorization_header(
-                base64_auth_header)
+                base64_auth_h)
             user_credentials= self.extract_user_credentials(auth_header)
             return self.user_object_from_credentials(user_credentials[0],
                                                      user_credentials[1])
