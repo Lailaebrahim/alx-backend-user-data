@@ -126,7 +126,7 @@ def update_user(user_id: str = None) -> str:
     return jsonify(user.to_json()), 200
 
 
-@app_views.rout('/users/me', methods=['GET'], strict_slashes=False)
+@app_views.route('/users/me', methods=['GET'], strict_slashes=False)
 def current_user():
     """ GET /api/v1/users/me
     Return:
