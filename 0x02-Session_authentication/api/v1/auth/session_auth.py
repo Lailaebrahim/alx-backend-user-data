@@ -27,4 +27,4 @@ class SessionAuth(Auth):
             return None
         Session_ID = uuid4()
         self.user_id_by_session_id[Session_ID] = user_id
-        return Session_ID 
+        return Session_ID
