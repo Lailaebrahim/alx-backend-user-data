@@ -50,10 +50,14 @@ class Auth():
         return None
 
     def session_cookie(self, request=None):
-        """_summary_
+        """
+        Returns the session cookie from the request.
+ 
+        Aegs:
+            request (Request, optional): The request object. Defaults to None.
 
-        Args:
-            request (_type_, optional): _description_. Defaults to None.
+        Returns:
+            str: The session cookie value if it exists, otherwise None.
         """
         if request is None:
             return None
