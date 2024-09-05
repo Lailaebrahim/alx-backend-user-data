@@ -17,7 +17,7 @@ class SessionAuth(Auth):
     def create_session(self, user_id: str = None) -> str:
         """
         Creates a session for the given user ID.
-        
+
         Args:
             user_id (str): The ID of the user. Defaults to None.
 

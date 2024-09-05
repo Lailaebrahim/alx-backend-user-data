@@ -52,7 +52,7 @@ class Auth():
     def session_cookie(self, request=None):
         """
         Returns the session cookie from the request.
- 
+
         Aegs:
             request (Request, optional): The request object. Defaults to None.
 
