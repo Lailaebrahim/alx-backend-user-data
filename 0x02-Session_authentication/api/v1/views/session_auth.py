@@ -8,10 +8,17 @@ from models.user import User
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
-    """_summary_
-
-    Args:
-        request (_type_): _description_
+    """ 
+    Summary:
+        This view handles the login functionality using session authentication.
+        request (object): The request object containing the form data.
+    Returns:
+        - If the email or password is missing or not a string, it returns a JSON response
+            with an error message and a status code of 400.
+        - If no user is found for the given email, it returns a JSON response
+            with an error message and a status code of 404.
+        - If the password is valid, it creates a session for the user, sets a session cookie,
+            and returns a JSON response with the user's data.
     """
     email = request.form.get('email')
     if email is None or email == '' or not isinstance(email, str):
@@ -30,5 +37,4 @@ def login():
             response = jsonify(user.to_json())
             from os import getenv
             response.set_cookie(getenv('SESSION_NAME'), session)
-    
-    
+            return response
