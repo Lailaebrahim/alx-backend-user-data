@@ -6,5 +6,9 @@ from api.v1.auth.auth import Auth
 
 
 class SessionAuth(Auth):
+    """SessionAuth Class
+
+    This class represents the session-based authentication mechanism.
+    """
     """SessionAuth Class"""
     pass
