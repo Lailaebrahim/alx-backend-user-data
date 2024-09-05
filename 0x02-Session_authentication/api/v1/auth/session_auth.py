@@ -33,6 +33,6 @@ class SessionAuth(Auth):
         """_summary_
         """
         if session_id is None or not isinstance(session_id, str) or\
-            session_id not in self.user_id_by_session_id:
+                session_id not in self.user_id_by_session_id:
             return None
         return self.user_id_by_session_id.get(session_id)
