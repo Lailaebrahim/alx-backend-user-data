@@ -40,4 +40,4 @@ def login():
             from os import getenv
             response.set_cookie(getenv('SESSION_NAME'), session)
             return response
-    return jsonify({"error": "wrong password" }), 401
+    return jsonify({"error": "wrong password"}), 401
