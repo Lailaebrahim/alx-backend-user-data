@@ -9,8 +9,8 @@ Base = declarative_base()
 class User(Base):
     """ User Model"""
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(VARCHAR(250), nullable=False)
     hashed_password = Column(VARCHAR(250), nullable=False)
-    session_id = Column(VARCHAR(250), nullable=False)
+    session_id = Column(VARCHAR(250), nullable=True)
     reset_token = Column(VARCHAR(250), nullable=True)
