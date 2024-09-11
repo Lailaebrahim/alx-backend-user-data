@@ -58,7 +58,7 @@ def logout():
         abort(403)
 
 
-@app.route('/profile', methods=["GET"], strict_slashes=False)
+@app.route('/profile', methods=['GET'], strict_slashes=False)
 def profile():
     """Profile Views"""
     session_id = request.cookies.get('session_id')
