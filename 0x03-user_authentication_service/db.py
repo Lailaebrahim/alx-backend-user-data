@@ -64,3 +64,23 @@ class DB:
             return user
         except AttributeError:
             raise InvalidRequestError
+
+    def update_use(self, user_id: int, **kwargs: dict) -> None:
+        """_summary_
+
+        Args:
+            user_id (int): _description_
+        """
+        try:
+            user = self.find_user_by(id=user_id)
+            if user is None:
+                raise NoResultFound
+            for key, value in kwargs.items():
+                if hasattr(user, key):
+                    setattr(user, key, value)
+                else:
+                    raise ValueError
+            self._session.commit()
+            return None
+        except AttributeError:
+            raise InvalidRequestError
