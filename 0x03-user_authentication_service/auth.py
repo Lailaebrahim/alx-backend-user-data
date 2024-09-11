@@ -9,6 +9,10 @@ from sqlalchemy.orm.exc import NoResultFound
 salt = gensalt()
 
 
+def _generate_uuid() -> str:
+    """Create a new uuid"""
+    return str(uuid.uuid4())
+
 def _hash_password(password: str) -> bytes:
     """
     Encrypts a password
@@ -16,9 +20,6 @@ def _hash_password(password: str) -> bytes:
     password = password.encode('utf-8')
     return hashpw(password, salt)
 
-def _generate_uuid() -> str:
-    """Create a new uuid"""
-    return str(uuid.UUID())
 
 class Auth:
     """Auth class to interact with the authentication database.
@@ -59,3 +60,5 @@ class Auth:
                 return checkpw(password.encode('utf-8'), user.hashed_password)
         except Exception:
             return False
+
+print(_generate_uuid())
