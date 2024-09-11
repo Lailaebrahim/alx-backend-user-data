@@ -35,14 +35,15 @@ def login():
     try:
         if AUTH.valid_login(email, password):
             session_id = AUTH.create_session(email)
-            response = make_response(jsonify({"email": email, "message": "logged in"}), 200)
+            response = make_response(jsonify({"email": email,
+                                              "message": "logged in"}), 200)
             response.set_cookie("session_id", session_id)
-            return  response
+            return response
         else:
             abort(401)
     except Exception:
-        return jsonify({"message": "Internal Server Erro"}, 500)   
-    
+        return jsonify({"message": "Internal Server Erro"}, 500)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
