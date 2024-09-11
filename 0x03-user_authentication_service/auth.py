@@ -65,7 +65,6 @@ class Auth:
     def create_session(self, email: str) -> str:
         """
         Create a session for the user with the given email.
-        
         Args:
             email (str): The email of the user.
             str: The session ID generated for the user.
