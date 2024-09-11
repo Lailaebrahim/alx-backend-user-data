@@ -3,6 +3,7 @@
 from bcrypt import hashpw, gensalt
 from db import DB
 from user import User
+from sqlalchemy.orm.exc import NoResultFound
 
 salt = gensalt()
 
@@ -33,8 +34,10 @@ class Auth:
         Returns:
             User: newly created password
         """
-        user = self._db.find_user_by(email=email)
-        if user:
-            raise ValueError(f"User {email} already exists")
-        hased_password = _hash_password(password)
-        return self._db.add_user(email, hased_password)
+        try:
+            user = self._db.find_user_by(email=email)
+            if user:
+                raise ValueError(f"User {email} already exists")
+        except NoResultFound:
+            hased_password = _hash_password(password)
+            return self._db.add_user(email, hased_password)
