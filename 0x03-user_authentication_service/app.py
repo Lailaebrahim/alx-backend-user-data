@@ -15,7 +15,7 @@ def home():
 
 
 @app.route("/users", methods=["POST"], strict_slashes=False)
-def register_user():
+def users():
     payload = request.get_json()
     email = payload.get("email")
     password = payload.get("password")
