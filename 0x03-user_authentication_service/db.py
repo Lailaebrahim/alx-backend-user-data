@@ -49,10 +49,12 @@ class DB:
     
     def find_user_by(self, **kwargs: dict) -> User:
         """ Find user by a given argument"""
+        for key in kwargs.keys():
+            if not hasattr(User, key):
+                raise InvalidRequestError
+            
         try:
             user = self._session.query(User).filter_by(**kwargs).one()
         except NoResultFound:
             raise NoResultFound
-        except InvalidRequestError:
-            raise InvalidRequestError
         return user

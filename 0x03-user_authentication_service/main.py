@@ -2,12 +2,15 @@
 """
 Main file
 """
+
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
+import logging
 from db import DB
 from user import User
 
-from sqlalchemy.exc import InvalidRequestError
-from sqlalchemy.orm.exc import NoResultFound
-
+# Disable logging
+logging.disable(logging.CRITICAL)
 
 my_db = DB()
 
