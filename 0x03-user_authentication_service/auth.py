@@ -63,13 +63,14 @@ class Auth:
             return False
 
     def create_session(self, email: str) -> str:
-        """_summary_
-
+        """
+        Create a session for the user with the given email.
+        
         Args:
-            email (str): _description_
-
-        Returns:
-            str: _description_
+            email (str): The email of the user.
+            str: The session ID generated for the user.
+        returns:
+            str: The session ID generated for the user.
         """
         try:
             user = self._db.find_user_by(email=email)
@@ -77,5 +78,20 @@ class Auth:
             user.session_id = session_id
             self._db._session.commit()
             return session_id
+        except Exception:
+            return None
+
+    def get_user_from_session_id(self, session_id: str) -> str:
+        """_summary_
+
+        Args:
+            session_id (str): _description_
+
+        Returns:
+            str: _description_
+        """
+        try:
+            user = self._db.find_user_by(session_id=session_id)
+            return user
         except Exception:
             return None
