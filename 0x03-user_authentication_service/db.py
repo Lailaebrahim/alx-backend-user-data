@@ -79,5 +79,5 @@ class DB:
                 setattr(user, key, value)
             else:
                 raise ValueError(f"Invalid Attribute : {key}")
-    
+
         self._session.commit()
