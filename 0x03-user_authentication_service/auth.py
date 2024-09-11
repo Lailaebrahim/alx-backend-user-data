@@ -61,3 +61,21 @@ class Auth:
                 return checkpw(password.encode('utf-8'), user.hashed_password)
         except Exception:
             return False
+
+    def create_session(self, email: str) -> str:
+        """_summary_
+
+        Args:
+            email (str): _description_
+
+        Returns:
+            str: _description_
+        """
+        try:
+            user = self._db.find_user_by(email=email)
+            session_id = _generate_uuid()
+            user.session_id = session_id
+            self._db._session.commit()
+            return session_id
+        except Exception:
+            return None
