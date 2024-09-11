@@ -3,8 +3,12 @@
 Main file
 """
 
+import logging
 from db import DB
 from user import User
+
+# Disable logging
+logging.disable(logging.CRITICAL)
 
 my_db = DB()
 
