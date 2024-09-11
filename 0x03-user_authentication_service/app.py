@@ -22,11 +22,11 @@ def users():
         return jsonify({"message": "email and password is required"}), 400
     try:
         AUTH.register_user(email, password)
-    except ValueError:
-        return jsonify({"message": "email already registered"}), 400
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
-    return jsonify({"email": email, "message": "user created"}), 201
+        return jsonify({"email": email, "message": "user created"}), 201
+    except ValueError as e:
+        return jsonify({"message": str(e)}), 400
+    except Exception:
+        return jsonify({"message": "Internal server error"}), 500
 
 
 if __name__ == "__main__":
