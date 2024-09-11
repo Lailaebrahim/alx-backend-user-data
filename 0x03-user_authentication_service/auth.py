@@ -16,9 +16,9 @@ def _hash_password(password: str) -> bytes:
     password = password.encode('utf-8')
     return hashpw(password, salt)
 
-def _generate_uuid(self):
+def _generate_uuid() -> str:
     """Create a new uuid"""
-    return str(uuid.uuid4())
+    return str(uuid.UUID())
 
 class Auth:
     """Auth class to interact with the authentication database.
