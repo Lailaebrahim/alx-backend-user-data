@@ -42,7 +42,7 @@ class Auth:
             hased_password = _hash_password(password)
             return self._db.add_user(email, hased_password)
     
-    def valid_login(self, email: str, password: str):
+    def valid_login(self, email: str, password: str) -> bool:
         """_summary_
 
         Args:
