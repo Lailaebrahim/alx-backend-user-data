@@ -16,9 +16,8 @@ def home():
 
 @app.route("/users", methods=["POST"], strict_slashes=False)
 def users():
-    payload = request.get_json()
-    email = payload.get("email")
-    password = payload.get("password")
+    email = request.form.get('email')
+    password = request.form.get('password')
     if not email or not password:
         return jsonify({"message": "email and password is required"}), 400
     try:
