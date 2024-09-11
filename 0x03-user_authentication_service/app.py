@@ -26,8 +26,6 @@ def users():
         return jsonify({"email": email, "message": "user created"}), 201
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
-    except Exception:
-        return jsonify({"message": "Internal server error"}), 500
 
 
 if __name__ == "__main__":
