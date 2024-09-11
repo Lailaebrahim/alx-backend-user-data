@@ -32,17 +32,14 @@ def login():
     """
     email = request.form.get('email')
     password = request.form.get('password')
-    try:
-        if AUTH.valid_login(email, password):
+    if AUTH.valid_login(email, password):
             session_id = AUTH.create_session(email)
             response = make_response(jsonify({"email": email,
                                               "message": "logged in"}), 200)
             response.set_cookie("session_id", session_id)
             return response
-        else:
-            abort(401)
-    except Exception:
-        return jsonify({"message": "Internal Server Erro"}, 500)
+    else:
+        abort(401)
 
 
 if __name__ == "__main__":
