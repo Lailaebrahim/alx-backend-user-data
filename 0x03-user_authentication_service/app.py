@@ -23,8 +23,8 @@ def users():
     try:
         AUTH.register_user(email, password)
         return jsonify({"email": email, "message": "user created"}), 201
-    except ValueError as e:
-        return jsonify({"message": str(e)}), 400
+    except ValueError:
+        return jsonify({"message": "email already registered"}), 400
     except Exception:
         return jsonify({"message": "Internal server error"}), 500
 
