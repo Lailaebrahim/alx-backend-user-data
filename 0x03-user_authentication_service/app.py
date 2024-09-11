@@ -19,8 +19,6 @@ def users():
     """Users Registeration Route"""
     email = request.form.get('email')
     password = request.form.get('password')
-    if not email or not password:
-        return jsonify({"message": "email and password is required"}), 400
     try:
         AUTH.register_user(email, password)
         return jsonify({"email": email, "message": "user created"}), 201
