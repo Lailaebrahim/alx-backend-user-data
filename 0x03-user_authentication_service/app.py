@@ -19,11 +19,15 @@ def register_user():
     payload = request.get_json()
     email = payload.get("email")
     password = payload.get("password")
+    if not email or not password:
+        return jsonify({"message": "email and password is required"}), 400
     try:
         AUTH.register_user(email, password)
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
-    return jsonify({"email": email, "message": "user created"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    return jsonify({"email": email, "message": "user created"}), 201
 
 
 if __name__ == "__main__":
