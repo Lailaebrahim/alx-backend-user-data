@@ -5,7 +5,7 @@ from bcrypt import hashpw, gensalt
 salt = gensalt()
 
 
-def _hash_password(password: str):
+def _hash_password(password: str) -> bytes:
     """
     Encrypts a password
     """
