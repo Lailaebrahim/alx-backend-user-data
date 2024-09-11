@@ -44,13 +44,17 @@ def login():
 
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
-    """Logout user"""
+    """Logout route that destroys the user session if it exists."""
+    # Get session_id from cookies
     session_id = request.cookies.get('session_id')
-    user = Auth.get_user_from_session_id(session_id)
+    # Find user by session_id
+    user = AUTH.get_user_from_session_id(session_id)
     if user:
+        # If user exists, destroy session and redirect to /
         AUTH.destroy_session(user.id)
         return redirect('/')
     else:
+        # If no user is found, return 403 Forbidden
         abort(403)
 
 
