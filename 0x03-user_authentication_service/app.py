@@ -16,6 +16,7 @@ def home():
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
 def users():
+    """Users Registeration Route"""
     email = request.form.get('email')
     password = request.form.get('password')
     if not email or not password:
