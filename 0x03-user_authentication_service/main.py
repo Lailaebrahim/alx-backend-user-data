@@ -27,6 +27,7 @@ def log_in(email: str, password: str) -> str:
     assert response.status_code == 200
     return response.cookies.get('session_id')
 
+
 def profile_unlogged() -> None:
     """ test  request profile when not logged in"""
     url = "http://localhost:5000/profile"
@@ -62,7 +63,8 @@ def reset_password_token(email: str) -> str:
 def update_password(email: str, reset_token: str, new_password: str) -> None:
     """test reset password route"""
     url = "http://localhost:5000/reset_password"
-    data = {"email": email, "reset_token": reset_token, "new_password": new_password}
+    data = {"email": email, "reset_token": reset_token,
+            "new_password": new_password}
     response = requests.put(url, data)
     assert response.status_code == 200
 
