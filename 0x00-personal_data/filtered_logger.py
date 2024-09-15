@@ -5,6 +5,8 @@ Method to filter logging
 import logging
 import re
 from typing import List
+import mysql
+import os
 
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
@@ -62,3 +64,18 @@ def get_logger() -> logging.Logger:
     logger.addHandler(logging.StreamHandler())
     logger.handlers[0].setFormatter(RedactingFormatter(List(PII_FIELDS)))
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """
+    return a connector to the database
+
+    Returns:
+        mysql.connector.connection.MySQLConnection: connector to the database
+    """
+    return mysql.connector.connect(
+        host=os.getenv('PERSONAL_DATA_DB_HOST'),
+        database=os.getenv('PERSONAL_DATA_DB_NAME'),
+        user=os.getenv('PERSONAL_DATA_DB_USERNAME'),
+        password=os.getenv('PERSONAL_DATA_DB_PASSWORD')
+    )
