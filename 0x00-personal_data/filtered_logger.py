@@ -5,7 +5,7 @@ Method to filter logging
 import logging
 import re
 from typing import List
-import mysql
+import mysql.connector
 import os
 
 
