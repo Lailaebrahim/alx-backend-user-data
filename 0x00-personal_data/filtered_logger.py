@@ -79,3 +79,20 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         user=os.getenv('PERSONAL_DATA_DB_USERNAME', "root"),
         password=os.getenv('PERSONAL_DATA_DB_PASSWORD', "")
     )
+
+
+def main() -> None:
+    """Main Function"""
+    db_connection = get_db()
+    cursor = db_connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM users;")
+    logger_object = get_logger()
+    for row in cursor.fetchall:
+        msg = "; ".join(f"{key}={value}" for key, value in row.items())
+        logger_object.info(msg)
+    cursor.close()
+    db_connection.close()
+
+
+if __name__ == "__main__":
+    main()
